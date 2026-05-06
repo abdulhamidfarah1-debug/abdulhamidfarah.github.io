@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Lead System | Lead Generation & Paid Advertising</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-white text-slate-900" x-data="{ currentModal: null }">
+
+    <!-- Header/Navigation -->
+    <nav class="py-4 px-6 border-b border-slate-100 bg-white sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- Logo -->
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-md shadow-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5-5-5 5"/><path d="m17 17-5 5-5-5"/></svg>
+                </div>
+                <div class="font-bold text-xl tracking-tight text-slate-900 uppercase">Local Lead System</div>
+            </div>
+            <div class="hidden md:flex gap-8 font-medium text-sm text-slate-600">
+                <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+                <a href="#services" class="hover:text-blue-600 transition-colors">Services</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+            <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all">
+                Book a Call
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="py-20 md:py-32 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
+                Helping Local Service Businesses <span class="text-blue-600">Generate More Leads</span>
+            </h1>
+            <p class="text-xl text-slate-600 mb-10 leading-relaxed">
+                We help service-based businesses grow through paid advertising, lead generation, and follow-up systems.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-100">
+                    Book a Call
+                </a>
+                <a href="#services" class="bg-slate-100 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-200 transition-all">
+                    View Services
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-sm text-center md:text-left">
+                <h2 class="text-3xl font-bold mb-6 text-slate-900">About Local Lead System</h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Local Lead System is a professional marketing service dedicated to helping local businesses capture more customer inquiries. We bridge the gap between digital interest and booked appointments through high-performance digital advertising and strategic outreach. Our mission is to provide local service providers with a consistent, predictable flow of high-quality leads so they can focus on what they do best: serving their clients and growing their business.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Services</h2>
+                <p class="text-slate-500 font-medium">Comprehensive growth systems for local businesses.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 border border-slate-100 rounded-2xl hover:shadow-lg transition-all bg-white">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Paid Ads Management</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Targeted campaigns on Google and Social Media to find your ideal customers where they are searching.</p>
+                </div>
+                <div class="p-8 border border-slate-100 rounded-2xl hover:shadow-lg transition-all bg-white">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Lead Generation Systems</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Custom-built funnels designed to turn clicks into high-intent inquiries for your services.</p>
+                </div>
+                <div class="p-8 border border-slate-100 rounded-2xl hover:shadow-lg transition-all bg-white">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SMS Follow-Up Setup</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Automated text messaging to ensure no lead goes cold and appointments are confirmed instantly.</p>
+                </div>
+            </div>
+            <div class="mt-8 grid md:grid-cols-2 gap-8">
+                <div class="p-8 border border-slate-100 rounded-2xl hover:shadow-lg transition-all bg-white">
+                    <h3 class="text-xl font-bold mb-3 text-blue-600">Landing Page Creation</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">High-converting single-page websites designed specifically for your advertising campaigns to maximize ROI.</p>
+                </div>
+                <div class="p-8 border border-slate-100 rounded-2xl hover:shadow-lg transition-all bg-white">
+                    <h3 class="text-xl font-bold mb-3 text-blue-600">Appointment Booking Support</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Integration with booking software to automate your calendar and reduce administrative overhead.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Help -->
+    <section class="py-20 px-6 bg-slate-900 text-white overflow-hidden relative">
+        <div class="max-w-6xl mx-auto relative z-10 text-center">
+            <h2 class="text-3xl font-bold mb-12">Who We Help</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-6 py-3 bg-white/10 rounded-full font-semibold border border-white/10 hover:bg-white/20 transition-all">Epoxy Flooring Companies</span>
+                <span class="px-6 py-3 bg-white/10 rounded-full font-semibold border border-white/10 hover:bg-white/20 transition-all">Car Detailing Businesses</span>
+                <span class="px-6 py-3 bg-white/10 rounded-full font-semibold border border-white/10 hover:bg-white/20 transition-all">Roofing Companies</span>
+                <span class="px-6 py-3 bg-white/10 rounded-full font-semibold border border-white/10 hover:bg-white/20 transition-all">Local Home Service Businesses</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & SMS Consent -->
+    <section id="contact" class="py-24 px-6 bg-white" x-data="{ success: false }">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
+            <div>
+                <h2 class="text-4xl font-bold text-slate-900 mb-6">Let's Talk Growth</h2>
+                <p class="text-slate-600 mb-10 text-lg leading-relaxed">Contact us directly or fill out the form to see how we can increase your customer inquiries and scale your business.</p>
+                
+                <div class="space-y-8">
+                    <div>
+                        <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">Business Name</p>
+                        <p class="text-xl font-bold">Local Lead System</p>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">Owner</p>
+                        <p class="text-xl font-bold">Abdulhamid Farah</p>
+                        <p class="text-slate-500 mt-2 text-sm leading-relaxed italic max-w-xs">
+                            "I am passionate about helping local businesses find their footing and scale through modern marketing. I hope we can start a successful journey together!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-8 md:p-10 rounded-[32px] border border-slate-100 shadow-sm">
+                <div x-show="!success">
+                    <form @submit.prevent="success = true" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">First Name</label>
+                                <input type="text" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Last Name</label>
+                                <input type="text" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
+                            <input type="email" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Phone Number</label>
+                            <input type="tel" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Message</label>
+                            <textarea rows="3" placeholder="Tell us about your business..." class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600"></textarea>
+                        </div>
+                        
+                        <!-- 10DLC COMPLIANT SMS CONSENT BOX -->
+                        <div class="flex items-start gap-3 pt-2">
+                            <input type="checkbox" id="sms-consent" class="mt-1 w-5 h-5 rounded border-slate-300 text-blue-600">
+                            <label for="sms-consent" class="text-[11px] text-slate-500 leading-normal">
+                                By checking this box, I agree to receive SMS messages from Local Lead System about marketing services, appointments, and follow-ups. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-all mt-4">
+                            Submit Application
+                        </button>
+                    </form>
+                </div>
+                <div x-show="success" x-cloak class="text-center py-12">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-slate-900">Thank You</h3>
+                    <p class="text-slate-600">Abdulhamid Farah or a member of our team will contact you within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-16 px-6 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <div class="w-6 h-6 bg-slate-400 rounded-md flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5-5-5 5"/><path d="m17 17-5 5-5-5"/></svg>
+                </div>
+                <div class="font-bold text-lg text-slate-900 uppercase tracking-tighter">Local Lead System</div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 mb-12 text-sm font-semibold text-slate-500 uppercase tracking-widest">
+                <button @click="currentModal = 'privacy'" class="hover:text-blue-600 transition-colors">Privacy Policy</button>
+                <button @click="currentModal = 'terms'" class="hover:text-blue-600 transition-colors">Terms & Conditions</button>
+                <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+            <p class="text-slate-400 text-xs">© 2024 Local Lead System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS FOR POLICIES -->
+    
+    <!-- Privacy Policy Modal -->
+    <div x-show="currentModal === 'privacy'" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative shadow-2xl">
+            <button @click="currentModal = null" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <h2 class="text-2xl font-bold mb-6 text-slate-900">Privacy Policy</h2>
+            <div class="prose prose-slate text-sm space-y-4 text-slate-600 leading-relaxed">
+                <p><strong>What information we collect:</strong> We collect your first name, last name, phone number, email address, and any specific details provided in our inquiry forms.</p>
+                <p><strong>How we use the information:</strong> We use this information to respond to your inquiries, provide the requested marketing services, and manage scheduling.</p>
+                <p><strong>Third-Party Sharing:</strong> We do not sell or share your mobile information or personal data with third parties for promotional or marketing purposes. <strong>Mobile opt-in data and consent will not be shared with third parties for promotional or marketing purposes.</strong></p>
+                <p><strong>Data Retention:</strong> We retain your data only as long as necessary to provide our services. You may request deletion or updates to your information at any time by contacting us.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div x-show="currentModal === 'terms'" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative shadow-2xl">
+            <button @click="currentModal = null" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <h2 class="text-2xl font-bold mb-6 text-slate-900">Terms & Conditions</h2>
+            <div class="prose prose-slate text-sm space-y-4 text-slate-600 leading-relaxed">
+                <p><strong>Business Name:</strong> Local Lead System</p>
+                <p><strong>Service Description:</strong> Local Lead System provides digital advertising management, lead generation systems, and follow-up automation services for local service providers.</p>
+                <p><strong>SMS Program:</strong> By opting into our SMS program via the contact form, you agree to receive text messages related to your inquiry, service updates, and appointment reminders. Message frequency may vary based on your engagement with our services.</p>
+                <p><strong>Messaging Costs:</strong> Message and data rates may apply based on your mobile carrier plan.</p>
+                <p><strong>Unsubscribe:</strong> Reply STOP at any time to unsubscribe from further SMS communication. Reply HELP for assistance.</p>
+                <p><strong>Support:</strong> For help regarding our services, contact Abdulhamid Farah.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
