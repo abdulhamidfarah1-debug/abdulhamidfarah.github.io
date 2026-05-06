@@ -11,15 +11,41 @@
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         [x-cloak] { display: none !important; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
     </style>
 </head>
-<body class="bg-white text-slate-900" x-data="{ currentModal: null }">
+<body class="bg-white text-slate-900" x-data="{ 
+    currentModal: null, 
+    chatOpen: false,
+    messages: [
+        { role: 'bot', text: 'Hi! I\'m the Local Lead System assistant. How can I help you grow your business today?' }
+    ],
+    userMessage: '',
+    sendMessage() {
+        if (!this.userMessage.trim()) return;
+        this.messages.push({ role: 'user', text: this.userMessage });
+        const text = this.userMessage.toLowerCase();
+        this.userMessage = '';
+        
+        setTimeout(() => {
+            let response = 'Thanks for your message! Abdulhamid will get back to you shortly. For a faster response, you can call us at 602-647-4805.';
+            if (text.includes('price') || text.includes('cost')) response = 'Our pricing is custom based on your industry and lead volume goals. Let\'s book a call to discuss a plan that fits your ROI targets!';
+            if (text.includes('service') || text.includes('do')) response = 'We specialize in Paid Ads, custom Lead Gen funnels, and automated SMS follow-up systems.';
+            this.messages.push({ role: 'bot', text: response });
+        }, 1000);
+    }
+}">
 
     <!-- Header/Navigation -->
     <nav class="py-4 px-6 border-b border-slate-100 bg-white sticky top-0 z-40">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- Logo -->
                 <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-md shadow-blue-100">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5-5-5 5"/><path d="m17 17-5 5-5-5"/></svg>
                 </div>
@@ -31,8 +57,8 @@
                 <a href="#why-us" class="hover:text-blue-600 transition-colors">Why Us</a>
                 <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
             </div>
-            <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all">
-                Book a Call
+            <a href="mailto:abdulhamidfarah1@gmail.com" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-all shadow-sm">
+                Contact Now
             </a>
         </div>
     </nav>
@@ -47,7 +73,7 @@
                 We help service-based businesses grow through paid advertising, lead generation, and follow-up systems.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-100">
+                <a href="mailto:abdulhamidfarah1@gmail.com" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-100">
                     Book a Call
                 </a>
                 <a href="#services" class="bg-slate-100 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-200 transition-all">
@@ -63,7 +89,7 @@
             <div class="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-sm text-center md:text-left">
                 <h2 class="text-3xl font-bold mb-6 text-slate-900">About Local Lead System</h2>
                 <p class="text-lg text-slate-600 leading-relaxed">
-                    Local Lead System is a professional marketing service dedicated to helping local businesses capture more customer inquiries. We bridge the gap between digital interest and booked appointments through high-performance digital advertising and strategic outreach. Our mission is to provide local service providers with a consistent, predictable flow of high-quality leads so they can focus on what they do best: serving their clients and growing their business.
+                    Local Lead System is a professional marketing service dedicated to helping local businesses capture more customer inquiries. We bridge the gap between digital interest and booked appointments through high-performance digital advertising and strategic outreach. Our mission is to provide local service providers with a consistent, predictable flow of high-quality leads.
                 </p>
             </div>
         </div>
@@ -99,16 +125,6 @@
                     <p class="text-slate-500 text-sm leading-relaxed">Automated text messaging to ensure no lead goes cold and appointments are confirmed instantly.</p>
                 </div>
             </div>
-            <div class="mt-8 grid md:grid-cols-2 gap-8">
-                <div class="p-8 border border-slate-100 rounded-2xl hover:shadow-lg transition-all bg-white">
-                    <h3 class="text-xl font-bold mb-3 text-blue-600">Landing Page Creation</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">High-converting single-page websites designed specifically for your advertising campaigns to maximize ROI.</p>
-                </div>
-                <div class="p-8 border border-slate-100 rounded-2xl hover:shadow-lg transition-all bg-white">
-                    <h3 class="text-xl font-bold mb-3 text-blue-600">Appointment Booking Support</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Integration with booking software to automate your calendar and reduce administrative overhead.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -118,34 +134,25 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Why Partner With Us?</h2>
-                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">We don't just send you random traffic. We build a predictable system that qualifies prospects before they ever reach your inbox.</p>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">We don't just send you random traffic. We build a predictable system that qualifies prospects.</p>
                     
                     <ul class="space-y-4">
                         <li class="flex items-start gap-4">
-                            <div class="mt-1 bg-blue-600 text-white rounded-full p-1">
+                            <div class="mt-1 bg-blue-600 text-white rounded-full p-1 shadow-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900">Exclusivity Guaranteed</h4>
-                                <p class="text-sm text-slate-500">We work with one business per area. Your leads are yours alone—never shared with competitors.</p>
+                                <p class="text-sm text-slate-500">We work with one business per area. Your leads are yours alone.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="mt-1 bg-blue-600 text-white rounded-full p-1">
+                            <div class="mt-1 bg-blue-600 text-white rounded-full p-1 shadow-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900">Proven ROI Focus</h4>
-                                <p class="text-sm text-slate-500">We track every dollar spent to ensure your customer acquisition cost stays profitable.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 bg-blue-600 text-white rounded-full p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900">Speed to Lead</h4>
-                                <p class="text-sm text-slate-500">Our automated systems engage prospects within seconds, increasing booking rates by up to 400%.</p>
+                                <p class="text-sm text-slate-500">We track every dollar spent to ensure your acquisition cost stays profitable.</p>
                             </div>
                         </li>
                     </ul>
@@ -155,22 +162,17 @@
                     <div class="relative bg-white p-8 rounded-[32px] border border-slate-200 shadow-xl">
                         <div class="space-y-6">
                             <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-                                <span class="font-bold text-slate-900">New Leads This Month</span>
+                                <span class="font-bold text-slate-900">New Leads</span>
                                 <span class="text-blue-600 font-extrabold text-xl">+42</span>
                             </div>
-                            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-                                <span class="font-bold text-slate-900">Booking Rate</span>
-                                <span class="text-green-500 font-extrabold text-xl">68%</span>
-                            </div>
                             <div class="flex items-center justify-between">
-                                <span class="font-bold text-slate-900">Ad Spend Efficiency</span>
+                                <span class="font-bold text-slate-900">Ad Efficiency</span>
                                 <span class="text-blue-600 font-extrabold text-xl">High</span>
                             </div>
                             <div class="pt-4">
                                 <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                                     <div class="bg-blue-600 h-full w-[85%]"></div>
                                 </div>
-                                <p class="text-[10px] text-slate-400 mt-2 uppercase font-bold tracking-widest text-center">System Performance Optimization</p>
                             </div>
                         </div>
                     </div>
@@ -179,100 +181,35 @@
         </div>
     </section>
 
-    <!-- Who We Help -->
-    <section class="py-20 px-6 bg-slate-900 text-white overflow-hidden relative">
-        <div class="max-w-6xl mx-auto relative z-10 text-center">
-            <h2 class="text-3xl font-bold mb-12">Who We Help</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="px-6 py-3 bg-white/10 rounded-full font-semibold border border-white/10 hover:bg-white/20 transition-all">Epoxy Flooring Companies</span>
-                <span class="px-6 py-3 bg-white/10 rounded-full font-semibold border border-white/10 hover:bg-white/20 transition-all">Car Detailing Businesses</span>
-                <span class="px-6 py-3 bg-white/10 rounded-full font-semibold border border-white/10 hover:bg-white/20 transition-all">Roofing Companies</span>
-                <span class="px-6 py-3 bg-white/10 rounded-full font-semibold border border-white/10 hover:bg-white/20 transition-all">Local Home Service Businesses</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & SMS Consent -->
-    <section id="contact" class="py-24 px-6 bg-white" x-data="{ success: false }">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
-            <div>
-                <h2 class="text-4xl font-bold text-slate-900 mb-6">Let's Talk Growth</h2>
-                <p class="text-slate-600 mb-10 text-lg leading-relaxed">Fill out the form to see how we can increase your customer inquiries, or reach out directly if you have any specific questions.</p>
+    <!-- Contact Section (No Form) -->
+    <section id="contact" class="py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-slate-900 mb-6">Ready to Scale?</h2>
+            <p class="text-slate-600 mb-12 text-lg leading-relaxed mx-auto max-w-2xl">
+                I am currently taking on a limited number of local partners. Get in touch today to see if your area is available.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <a href="mailto:abdulhamidfarah1@gmail.com" class="p-8 bg-slate-50 border border-slate-100 rounded-[24px] hover:border-blue-600 hover:bg-blue-50 transition-all group text-center shadow-sm">
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-md shadow-blue-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Email Me</p>
+                    <h4 class="text-xl font-bold text-slate-900">abdulhamidfarah1@gmail.com</h4>
+                </a>
                 
-                <div class="space-y-8">
-                    <div>
-                        <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">Direct Contact</p>
-                        <div class="space-y-3">
-                            <a href="mailto:abdulhamidfarah1@gmail.com" class="flex items-center gap-3 text-slate-900 hover:text-blue-600 transition-colors group">
-                                <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center group-hover:bg-blue-50 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                </div>
-                                <span class="font-bold">abdulhamidfarah1@gmail.com</span>
-                            </a>
-                            <a href="tel:6026474805" class="flex items-center gap-3 text-slate-900 hover:text-blue-600 transition-colors group">
-                                <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center group-hover:bg-blue-50 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                </div>
-                                <span class="font-bold">602-647-4805</span>
-                            </a>
-                        </div>
+                <a href="tel:6026474805" class="p-8 bg-slate-50 border border-slate-100 rounded-[24px] hover:border-blue-600 hover:bg-blue-50 transition-all group text-center shadow-sm">
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-md shadow-blue-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
-                    <div class="pt-6 border-t border-slate-100">
-                        <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">Owner</p>
-                        <p class="text-xl font-bold">Abdulhamid Farah</p>
-                        <p class="text-slate-500 mt-2 text-sm leading-relaxed italic max-w-xs">
-                            "I am passionate about helping local businesses find their footing and scale through modern marketing. I hope we can start a successful journey together!"
-                        </p>
-                    </div>
-                </div>
+                    <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Call Me</p>
+                    <h4 class="text-xl font-bold text-slate-900">602-647-4805</h4>
+                </a>
             </div>
 
-            <div class="bg-slate-50 p-8 md:p-10 rounded-[32px] border border-slate-100 shadow-sm">
-                <div x-show="!success">
-                    <form @submit.prevent="success = true" class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="space-y-1">
-                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">First Name</label>
-                                <input type="text" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Last Name</label>
-                                <input type="text" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600">
-                            </div>
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
-                            <input type="email" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Phone Number</label>
-                            <input type="tel" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Message</label>
-                            <textarea rows="3" placeholder="Tell us about your business..." class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 focus:outline-blue-600"></textarea>
-                        </div>
-                        
-                        <!-- 10DLC COMPLIANT SMS CONSENT BOX -->
-                        <div class="flex items-start gap-3 pt-2">
-                            <input type="checkbox" id="sms-consent" class="mt-1 w-5 h-5 rounded border-slate-300 text-blue-600">
-                            <label for="sms-consent" class="text-[11px] text-slate-500 leading-normal">
-                                By checking this box, I agree to receive SMS messages from Local Lead System about marketing services, appointments, and follow-ups. Message frequency may vary. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
-                            </label>
-                        </div>
-
-                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-all mt-4">
-                            Submit Application
-                        </button>
-                    </form>
-                </div>
-                <div x-show="success" x-cloak class="text-center py-12">
-                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 text-slate-900">Thank You</h3>
-                    <p class="text-slate-600">Abdulhamid Farah or a member of our team will contact you within 24 hours.</p>
-                </div>
+            <div class="inline-block py-6 px-10 bg-slate-900 text-white rounded-3xl shadow-xl">
+                <p class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Founder</p>
+                <p class="text-2xl font-bold">Abdulhamid Farah</p>
             </div>
         </div>
     </section>
@@ -280,12 +217,6 @@
     <!-- Footer -->
     <footer class="bg-slate-50 py-16 px-6 border-t border-slate-200">
         <div class="max-w-6xl mx-auto text-center">
-            <div class="flex items-center justify-center gap-2 mb-8">
-                <div class="w-6 h-6 bg-slate-400 rounded-md flex items-center justify-center text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5-5-5 5"/><path d="m17 17-5 5-5-5"/></svg>
-                </div>
-                <div class="font-bold text-lg text-slate-900 uppercase tracking-tighter">Local Lead System</div>
-            </div>
             <div class="flex flex-wrap justify-center gap-8 mb-12 text-sm font-semibold text-slate-500 uppercase tracking-widest">
                 <button @click="currentModal = 'privacy'" class="hover:text-blue-600 transition-colors">Privacy Policy</button>
                 <button @click="currentModal = 'terms'" class="hover:text-blue-600 transition-colors">Terms & Conditions</button>
@@ -295,42 +226,82 @@
         </div>
     </footer>
 
-    <!-- MODALS FOR POLICIES -->
-    
-    <!-- Privacy Policy Modal -->
+    <!-- Chat Widget (Maintained) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Window -->
+        <div x-show="chatOpen" 
+             x-transition:enter="transition ease-out duration-300" 
+             x-transition:enter-start="opacity-0 translate-y-10 scale-95" 
+             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+             x-transition:leave-end="opacity-0 translate-y-10 scale-95"
+             x-cloak
+             class="bg-white rounded-2xl shadow-2xl border border-slate-100 w-[350px] overflow-hidden mb-4 flex flex-col h-[450px]">
+            <!-- Chat Header -->
+            <div class="bg-blue-600 p-4 text-white flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 7-5-5-5 5"/><path d="m17 17-5 5-5-5"/></svg>
+                    </div>
+                    <span class="font-bold text-sm">LLS Assistant</span>
+                </div>
+                <button @click="chatOpen = false" class="hover:bg-black/10 rounded-full p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <!-- Messages Area -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
+                <template x-for="msg in messages">
+                    <div :class="msg.role === 'bot' ? 'flex justify-start' : 'flex justify-end'">
+                        <div :class="msg.role === 'bot' ? 'bg-white text-slate-800 border border-slate-200' : 'bg-blue-600 text-white'" 
+                             class="max-w-[80%] rounded-2xl px-4 py-2 text-sm shadow-sm">
+                            <p x-text="msg.text"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <!-- Input Area -->
+            <div class="p-4 bg-white border-t border-slate-100">
+                <form @submit.prevent="sendMessage" class="relative">
+                    <input type="text" x-model="userMessage" placeholder="Type your question..." 
+                           class="w-full pl-4 pr-12 py-2 bg-slate-100 border-none rounded-xl focus:ring-2 focus:ring-blue-600/20 text-sm">
+                    <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 text-blue-600 hover:scale-110 transition-transform p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Chat Trigger Button -->
+        <button @click="chatOpen = !chatOpen" 
+                class="w-16 h-16 bg-blue-600 text-white rounded-full shadow-xl flex items-center justify-center hover:scale-105 transition-all animate-float">
+            <svg x-show="!chatOpen" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <svg x-show="chatOpen" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+
+    <!-- Modals -->
     <div x-show="currentModal === 'privacy'" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm">
         <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative shadow-2xl">
-            <button @click="currentModal = null" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 transition-colors">
+            <button @click="currentModal = null" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
-            <h2 class="text-2xl font-bold mb-6 text-slate-900">Privacy Policy</h2>
-            <div class="prose prose-slate text-sm space-y-4 text-slate-600 leading-relaxed">
-                <p><strong>What information we collect:</strong> We collect your first name, last name, phone number, email address, and any specific details provided in our inquiry forms.</p>
-                <p><strong>How we use the information:</strong> We use this information to respond to your inquiries, provide the requested marketing services, and manage scheduling.</p>
-                <p><strong>Third-Party Sharing:</strong> We do not sell or share your mobile information or personal data with third parties for promotional or marketing purposes. <strong>Mobile opt-in data and consent will not be shared with third parties for promotional or marketing purposes.</strong></p>
-                <p><strong>Data Retention:</strong> We retain your data only as long as necessary to provide our services. You may request deletion or updates to your information at any time by contacting us.</p>
-            </div>
+            <h2 class="text-2xl font-bold mb-4">Privacy Policy</h2>
+            <p class="text-slate-600 text-sm">We value your privacy. Your information is kept strictly confidential.</p>
         </div>
     </div>
 
-    <!-- Terms Modal -->
     <div x-show="currentModal === 'terms'" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm">
         <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative shadow-2xl">
-            <button @click="currentModal = null" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 transition-colors">
+            <button @click="currentModal = null" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
-            <h2 class="text-2xl font-bold mb-6 text-slate-900">Terms & Conditions</h2>
-            <div class="prose prose-slate text-sm space-y-4 text-slate-600 leading-relaxed">
-                <p><strong>Business Name:</strong> Local Lead System</p>
-                <p><strong>Service Description:</strong> Local Lead System provides digital advertising management, lead generation systems, and follow-up automation services for local service providers.</p>
-                <p><strong>SMS Program:</strong> By opting into our SMS program via the contact form, you agree to receive text messages related to your inquiry, service updates, and appointment reminders. Message frequency may vary based on your engagement with our services.</p>
-                <p><strong>Messaging Costs:</strong> Message and data rates may apply based on your mobile carrier plan.</p>
-                <p><strong>Unsubscribe:</strong> Reply STOP at any time to unsubscribe from further SMS communication. Reply HELP for assistance.</p>
-                <p><strong>Support:</strong> For help regarding our services, contact Abdulhamid Farah.</p>
-            </div>
+            <h2 class="text-2xl font-bold mb-4">Terms & Conditions</h2>
+            <p class="text-slate-600 text-sm">Local Lead System provides marketing and lead generation consulting.</p>
         </div>
     </div>
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69fa980d106ae7711ec9a000" data-source="WEB_USER"></script>
 
-</body>
+</body> 
 </html>
